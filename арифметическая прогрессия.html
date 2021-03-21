@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+  <div class="idprogressiya" align="center"><h1>Прогрессия</h1></div>
+  <hr align="center" width="100%"/>
+  <div class="arifprogresshr"><h1>Арифметическая прогрессия</h1></div>
+  <hr align="center" width="100%"/>
+  <div>
+  <div class="allblock1">
+  <form name="algprogr">
+ <div class="blocka1">
+   <h>Введите значение a1:</h>
+ <input border="10px" type="text" name="stringa1" class="idstringa1" placeholder="a1"/>
+</div>
+ <div class = "blockd">
+   <h>Введите значение</h>
+   <select class="selecta2d" name="selecta2ord"id="select_a2_d">
+    <option value="optionselectd" id="dselect" selected>d</option>
+    <option value="optionselecta2" id="a2select">a2</option>
+   </select>
+ <input type="text" name="stringd" class="idstringd"placeholder="d/a2" /><br />
+</div>
+ <div class="blockn">
+   <h>Введите значение n:</h>
+ <input type="text" name="StringQuestionLoopFor_n" class = "idStringQuestionLoopFor_n"placeholder="n" /><br />
+</div>
+ <input type="button" name="sumbit" class="idsumbit" value="подтвердить" onclick="dofunction()"/>
+ </form>
+ </div>
+</div>
+<canvas id="myCanvas" width="480" height="320"></canvas>
+ <script>function dofunction(){
+ var ffstringa1 = document.forms.algprogr;
+ var fstringa1  = ffstringa1.elements.stringa1;
+ var fstringd   = ffstringa1.elements.stringd;
+ var fStringQuestionLoopFor_n = ffstringa1.elements.StringQuestionLoopFor_n;
+   var a1 = Number(fstringa1.value);
+   var Loop_n = Number(fStringQuestionLoopFor_n.value);
+
+   if(document.getElementById('select_a2_d').value=="optionselectd"){
+   var d = Number(fstringd.value);
+   var a2=a1+d;
+   var txtda12 = `d = ${d}<p>a1 = ${a1}</p><p>a2 = a1 + d = ${a2}</p>`;
+   document.write("<p>" + txtda12.fontsize(5).bold() + "</p>");
+ }
+ //if(document.getElementById('select_a2_d').value=="optionselecta2"){
+    else {
+    var a2 = Number(fstringd.value);
+    var d = a2 - a1;
+    var txtda12 = `d = a2 - a1 = ${d}<p>a1 = ${a1}</p><p>a2 = ${a2}</p>`;
+    document.write("<p>" + txtda12.fontsize(5).bold() + "</p>");
+  }
+    for(n=3;n<Loop_n+1;n++){
+      var txtan = `a${n} = ${(a1+d*(n-1))}   ;   `;
+     document.write("<p>" + txtan.fontsize(5).bold() + "</p>");
+     };
+    if(n=Loop_n){
+      var txtS = `  Сумма ${Loop_n} членов арифметической прогрессии = ${((a1*2)+(d*((n-1)/2)))*n}.`;
+    document.write("<p>" + txtS.fontsize(5).bold() + "</p>");
+  }
+ }
+ var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var ballRadius = 10;
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dx = 2;
+var dy = -2;
+
+function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+
+    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+        dy = -dy;
+    }
+
+    x += dx;
+    y += dy;
+}
+
+setInterval(draw, 10);
+ </script>
+<style>
+canvas { background: #eee; }
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-boxp;
+	font: bold 30px monospace;
+}
+  html {
+	height: 100%;
+	background: white;
+}
+.arifprogresshr{
+  margin-left: 16px;
+}
+.allblock1{
+  margin-left: 2px;
+  margin-top: 2px;
+  border: 2px solid #000000;
+  background-color: #FFFF99;
+  width: 460px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.blocka1 {
+margin-left: 5px;
+}
+.idstringa1 {
+  margin-left: 10px;
+  border-radius: 7px;
+  height: 40px;
+  outline: none;
+  font-size: 30px;
+  width: 70px;
+  border-style: ridge;
+}
+.blockd{
+  margin-left: 5px;
+}
+.idstringd{
+  border-radius: 7px;
+  height: 40px;
+  outline: none;
+  font-size: 30px;
+  width: 70px;
+  border-style: ridge;
+}
+.blockn{
+margin-left: 5px;
+}
+.idStringQuestionLoopFor_n{
+  margin-left: 26px;
+  border-radius: 7px;
+  height: 40px;
+  outline: none;
+  font-size: 30px;
+  width: 70px;
+  border-style: ridge;
+}
+.idsumbit{
+  border-radius: 7px;
+  height: 40px;
+  outline: none;
+  font-size: 30px;
+  width: 447px;
+  margin-left: 5px;
+  border-style: ridge;
+  letter-spacing: 16px;
+}
+.idprogressiya{
+
+}
+.selecta2d{
+border: 2px solid #000000;
+background-color: #FFFF99;
+border-radius: 5px;
+}
+@media (min-width: 5cm) and (max-width: 10cm){
+  * {
+  	margin: 0;
+  	padding: 0;
+  	font: bold 18px monospace;
+  }
+    html {
+  	height: 100%;
+  	background: white;
+  }
+  .allblock1{
+    margin-left: 1px;
+    margin-top: 0px;
+    border: 1px solid #000000;
+    width: 8cm;
+    height: 3cm;
+  }
+  .blocka1 {
+  margin-left: 5px;
+  }
+  .idstringa1 {
+    border-radius: 5px;
+    height: 20px;
+    font-size: 18px;
+    width: 1cm;
+    margin-left: 16px;
+  }
+  .blockd{
+    margin-left: 5px;
+  }
+  .idstringd{
+    border-radius: 5px;
+    height: 20px;
+    font-size: 18px;
+    width: 1cm;
+  }
+  .blockn{
+  margin-left: 5px;
+  }
+  .idStringQuestionLoopFor_n{
+    margin-left: 27px;
+    border-radius: 5px;
+    height: 20px;
+    font-size: 18px;
+    width: 1cm;
+  }
+  .idsumbit{
+    border-radius: 100px;
+    height: 30px;
+    outline: none;
+    font-size: 20px;
+    width: 6cm;
+    letter-spacing: 4px;
+    margin-left: 1cm;
+    margin-top: 3px;
+  }
+  .idprogressiya{
+  }
+}
+</style>
+</body>
+</html>
